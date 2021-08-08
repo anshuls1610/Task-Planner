@@ -37,7 +37,61 @@ const router = new Router({
             name: 'role',
             component: () =>
                 import ('../components/Role.vue')
-        }
+        },
+        {
+            path: '/user',
+            name: 'user',
+            component: () =>
+                import ('../components/User.vue')
+        },
+        {
+            path: '/task',
+            name: 'task',
+            component: () =>
+                import ('../components/Task.vue')
+        },
+        {
+            path: '/note',
+            name: 'note',
+            component: () =>
+                import ('../components/Note.vue')
+        },
+        {
+            path: '/bug',
+            name: 'bug',
+            component: () =>
+                import ('../components/Bug.vue')
+        },
+        {
+            path: '/testcase',
+            name: 'testcase',
+            component: () =>
+                import ('../components/TestCase.vue')
+        },
+        {
+            path: '/release',
+            name: 'release',
+            component: () =>
+                import ('../components/Release.vue')
+        },
+        {
+            path: '/userrole',
+            name: 'userRole',
+            component: () =>
+                import ('../components/UserRole.vue')
+        },
+        {
+            path: '/release',
+            name: 'release',
+            component: () =>
+                import ('../components/Release.vue')
+        },
+        {
+            path: '/release',
+            name: 'release',
+            component: () =>
+                import ('../components/Release.vue')
+        },
     ]
 });
 

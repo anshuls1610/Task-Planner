@@ -1,27 +1,23 @@
 <template>
   <v-container>
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
-    <p>
-      <strong>Token:</strong>
-      {{ currentUser.accessToken.substring(0, 20) }} ...
-      {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-    </p>
-    <p>
-      <strong>Id:</strong>
-      {{ currentUser.id }}
-    </p>
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-    <strong>Authorities:</strong>
-    <ul>
-      <li v-for="(role, index) in currentUser.roles" :key="index">
-        {{ role }}
-      </li>
-    </ul>
+    <v-card class="ma-12 text-left" shaped outlined>
+      <v-card-title>Profile</v-card-title>
+      <v-card-title>
+        <v-card-text class="font-weight-bold"
+          >Name: {{ currentUser.username }} - ({{
+            currentUser.roles.map((role) => role).toString(" ")
+          }})
+        </v-card-text>
+        <v-card-text>Id: {{ currentUser.id }}</v-card-text>
+        <v-card-text
+          >Token: {{ currentUser.accessToken.substring(0, 20) }} ...
+          {{
+            currentUser.accessToken.substr(currentUser.accessToken.length - 20)
+          }}
+        </v-card-text>
+        <v-card-text>Email: {{ currentUser.email }} </v-card-text>
+      </v-card-title>
+    </v-card>
   </v-container>
 </template>
 

@@ -9,15 +9,15 @@ import { VnatkCrud } from "vnatk-vue";
 import service from "@/services/service";
 
 export default {
-  name: "role",
+  name: "userRole",
   components: { VnatkCrud },
   data() {
     return {
       crudoptions: {
         service: service,
         basepath: "/api/vnatk",
-        model: "Role",
-        title: "Role",
+        model: "user_role",
+        title: "User Roles",
         create: true,
         read: {
           modeloptions: {},
