@@ -10,14 +10,18 @@
     "dependencies": {
         "axios": "^0.21.1",
         "core-js": "^3.6.5",
+        "file-saver": "^2.0.5",
         "lodash": "^4.17.21",
         "material-design-icons-iconfont": "^6.1.0",
+        "vee-validate": "^3.4.11",
         "vnatk-vue": "0.0.42",
         "vue": "^2.6.11",
         "vue-papa-parse": "^2.0.0",
         "vue-router": "^3.2.0",
         "vuetify": "^2.2.11",
-        "vuetify-form-base": "^0.3.3"
+        "vuetify-form-base": "^0.3.3",
+        "vuex": "^3.6.2",
+        "xlsx": "^0.17.0"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
