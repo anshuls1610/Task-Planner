@@ -18,12 +18,12 @@ export default {
         basepath: "/api/vnatk",
         model: "User",
         title: "User",
-        create: true,
+        create: false,
         read: {
           modeloptions: {},
           serversidepagination: true,
         },
-        actions: true,
+        actions: false,
         override: {
           headers: {},
           actions: [],

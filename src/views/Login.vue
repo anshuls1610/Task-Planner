@@ -86,7 +86,7 @@ export default {
         //console.log('dispatch user from login : ', this.user)
         this.$store.dispatch("auth/login", this.user).then(
           () => {
-            this.$router.push("/home");
+            this.$router.push("/dashboard");
           },
           (error) => {
             //this.loading = false;

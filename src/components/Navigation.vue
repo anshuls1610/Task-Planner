@@ -32,7 +32,7 @@
             {{ currentUser.username }}
           </v-btn>
         </router-link>
-        <v-btn text elevation="0" @click.prevent="logOut">
+        <v-btn text elevation="0" v-if="currentUser" @click.prevent="logOut">
           <v-icon dark left>
             mdi-logout
           </v-icon>
@@ -55,26 +55,10 @@
           <v-tab
             v-if="
               currentUser.roles.includes('ROLE_ADMIN') ||
-                currentUser.roles.includes('ROLE_DEV_LEAD')
-            "
-            to="/assigntask"
-            >Assign Tasks</v-tab
-          >
-          <v-tab
-            v-if="
-              currentUser.roles.includes('ROLE_ADMIN') ||
                 currentUser.roles.includes('ROLE_TESTER')
             "
             to="/bug"
             >Bug</v-tab
-          >
-          <v-tab
-            v-if="
-              currentUser.roles.includes('ROLE_ADMIN') ||
-                currentUser.roles.includes('ROLE_TEST_LEAD')
-            "
-            to="/assignbug"
-            >Assign Bugs</v-tab
           >
           <v-tab
             v-if="
@@ -105,9 +89,9 @@
             >
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-title class="font-weight-bold">
+            <v-list-item-title class="title font-weight-regular text-left">
               Menu
-            </v-list-title>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
