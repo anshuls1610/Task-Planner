@@ -5,10 +5,9 @@ import store from './store';
 import Vuex from 'vuex';
 import vuetify from './plugins/vuetify';
 import VuePapaParse from "vue-papa-parse";
-import * as VeeValidate from 'vee-validate';
+import '@/mixins/generalMixin';
 
 Vue.config.productionTip = false;
-Vue.use(VeeValidate);
 Vue.use(Vuex);
 Vue.use(VuePapaParse);
 

@@ -6,7 +6,6 @@
       ></v-app-bar-nav-icon>
       <v-app-bar-title class="font-weight-light">Task Planner</v-app-bar-title>
       <v-spacer></v-spacer>
-
       <div v-if="!currentUser" class="ml-auto">
         <router-link to="/login" class="">
           <v-btn text elevation="0">
@@ -137,20 +136,21 @@ export default {
 
   data() {
     return {
+      currentUser: null,
       sidebarMenu: true,
       toggleMini: false,
       items: [
         { title: "Dashboard", href: "/dashboard", icon: "mdi-home-outline" },
         { title: "Profile", href: "/profile", icon: "mdi-face-profile" },
-        // {
-        //   title: "Table",
-        //   href: "/table",
-        //   icon: "mdi-file-document-box-outline",
-        // },
         { title: "Settings", href: "/settings", icon: "mdi-settings-outline" },
       ],
     };
   },
+
+  mounted() {
+    this.currentUser = this.getCurrentUser();
+  },
+
   computed: {
     mini: {
       get() {
@@ -159,22 +159,6 @@ export default {
       set(value) {
         this.toggleMini = value;
       },
-    },
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        console.log("current user from navigation: ", this.currentUser);
-        return this.currentUser.roles.includes("ROLE_ADMIN");
-      }
-      return false;
-    },
-    showModeratorBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes("ROLE_MODERATOR");
-      }
-      return false;
     },
   },
   methods: {

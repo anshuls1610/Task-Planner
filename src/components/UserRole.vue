@@ -12,19 +12,20 @@ export default {
   name: "userRole",
   components: { VnatkCrud },
   data() {
-    return {};
+    return {
+      currentUser: null,
+    };
   },
 
-  computed: {
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
+  mounted() {
+    this.currentUser = this.getCurrentUser();
   },
 
   methods: {
     crudoptions() {
       let createPermission = false;
       let deletePermission = false;
+
       if (this.currentUser && this.currentUser.roles.includes("ROLE_ADMIN")) {
         createPermission = {
           modeloptions: {

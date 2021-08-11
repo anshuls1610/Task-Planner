@@ -18,14 +18,24 @@ export default {
         basepath: "/api/vnatk",
         model: "Role",
         title: "Role",
-        create: false,
+        create: {
+          modeloptions: {
+            attributes: ["name"],
+          },
+        },
         read: {
           modeloptions: {},
           serversidepagination: true,
         },
-        actions: false,
+        actions: true,
+        update: false,
+        delete: false,
         override: {
-          headers: {},
+          headers: {
+            vnatk_actions: {
+              hide: true,
+            },
+          },
           actions: [],
         },
       },

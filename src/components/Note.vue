@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vnatk-crud :options="crudoptions"> </vnatk-crud>
+    <vnatk-crud :options="crudoptions()"> </vnatk-crud>
   </div>
 </template>
 
@@ -13,12 +13,26 @@ export default {
   components: { VnatkCrud },
   data() {
     return {
-      crudoptions: {
+      currentUser: null,
+    };
+  },
+
+  mounted() {
+    this.currentUser = this.getCurrentUser();
+  },
+
+  methods: {
+    crudoptions() {
+      return {
         service: service,
         basepath: "/api/vnatk",
         model: "Note",
         title: "Note",
-        create: true,
+        create: {
+          modeloptions: {
+            attributes: ["text", "userId"],
+          },
+        },
         read: {
           modeloptions: {},
           serversidepagination: true,
@@ -26,11 +40,30 @@ export default {
         actions: true,
         override: {
           headers: {},
-          actions: [],
+          actions: [
+            {
+              name: "vnatk_add",
+              formschemaoverrides: {
+                userId: {
+                  searchField: "username",
+                  titlefield: "username",
+                  type: "select",
+                  hidden: true,
+                  items: [
+                    {
+                      text: this.currentUser ? this.currentUser.username : null,
+                      value: this.currentUser ? this.currentUser.id : null,
+                    },
+                  ],
+                  defaultValue: this.currentUser ? this.currentUser.id : null,
+                  disabled: true,
+                },
+              },
+            },
+          ],
         },
-      },
-    };
+      };
+    },
   },
-  methods: {},
 };
 </script>

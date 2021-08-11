@@ -18,15 +18,64 @@ export default {
         basepath: "/api/vnatk",
         model: "Bug",
         title: "Bug",
-        create: true,
+        create: {
+          modeloptions: {
+            attributes: [
+              "bug",
+              "description",
+              "assignedToDevId",
+              "createdById",
+            ],
+          },
+        },
         read: {
           modeloptions: {},
           serversidepagination: true,
         },
+        update: {
+          modeloptions: {
+            attributes: [
+              "bug",
+              "description",
+              "assignedToDevId",
+              "updatedById",
+            ],
+          },
+        },
         actions: true,
         override: {
           headers: {},
-          actions: [],
+          actions: [
+            {
+              name: "vnatk_add",
+              formschemaoverrides: {
+                assignedToDevId: {
+                  searchField: "username",
+                  titlefield: "username",
+                },
+                createdById: {
+                  hidden: true,
+                  disabled: true,
+                  defaultValue: this.currentUser ? this.currentUser.id : null,
+                },
+              },
+            },
+            {
+              name: "vnatk_edit",
+              formschemaoverrides: {
+                assignedToDevId: {
+                  searchField: "username",
+                  titlefield: "username",
+                  clearable: true,
+                },
+                updatedById: {
+                  // hidden: true,
+                  disabled: true,
+                  value: this.currentUser ? this.currentUser.id : null,
+                },
+              },
+            },
+          ],
         },
       },
     };

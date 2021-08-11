@@ -18,7 +18,16 @@ export default {
         basepath: "/api/vnatk",
         model: "Testcase",
         title: "Testcase",
-        create: true,
+        create: {
+          modeloptions: {
+            attributes: ["name", "case"],
+          },
+        },
+        update: {
+          modeloptions: {
+            attributes: ["name", "case", "status"],
+          },
+        },
         read: {
           modeloptions: {},
           serversidepagination: true,
