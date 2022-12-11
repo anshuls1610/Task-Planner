@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vnatk-crud :options="crudoptions"> </vnatk-crud>
+    <vnatk-crud :options="crudoptions"> Bug Fix</vnatk-crud>
   </div>
 </template>
 
